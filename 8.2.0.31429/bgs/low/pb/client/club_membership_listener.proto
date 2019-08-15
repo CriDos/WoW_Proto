@@ -1,0 +1,37 @@
+package bgs.protocol.club.v1.membership;
+import "bgs/low/pb/client/club_types.proto";
+message ClubAddedNotification {
+	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
+	optional .bgs.protocol.club.v1.ClubMembershipDescription membership = 3;
+}
+message ClubRemovedNotification {
+	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
+	optional .bgs.protocol.club.v1.MemberId member_id = 3;
+	optional uint64 club_id = 4;
+	optional .bgs.protocol.club.v1.ClubRemovedReason reason = 5;
+}
+message ReceivedInvitationAddedNotification {
+	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
+	optional .bgs.protocol.club.v1.ClubInvitation invitation = 3;
+}
+message ReceivedInvitationRemovedNotification {
+	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
+	optional fixed64 invitation_id = 3;
+	optional .bgs.protocol.InvitationRemovedReason reason = 4;
+}
+message SharedSettingsChangedNotification {
+	optional .bgs.protocol.account.v1.AccountId agent_id = 1;
+	optional .bgs.protocol.club.v1.ClubSharedSettingsAssignment assignment = 4;
+}
+message StreamMentionAddedNotification {
+	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
+	optional .bgs.protocol.club.v1.StreamMention mention = 3;
+}
+message StreamMentionRemovedNotification {
+	optional .bgs.protocol.account.v1.AccountId agent_id = 1;
+	optional .bgs.protocol.TimeSeriesId mention_id = 3;
+}
+message StreamMentionAdvanceViewTimeNotification {
+	optional .bgs.protocol.account.v1.AccountId agent_id = 1;
+	optional uint64 view_time = 3;
+}

@@ -1,0 +1,56 @@
+package bgs.protocol.presence.v1;
+import "bgs/low/pb/client/entity_types.proto";
+import "bgs/low/pb/client/presence_types.proto";
+import "bgs/low/pb/client/rpc_types.proto";
+message SubscribeRequest {
+	optional .bgs.protocol.EntityId agent_id = 1;
+	required .bgs.protocol.EntityId entity_id = 2;
+	required uint64 object_id = 3;
+	repeated fixed32 program = 4;
+	repeated .bgs.protocol.presence.v1.FieldKey key = 6;
+}
+message SubscribeNotificationRequest {
+	required .bgs.protocol.EntityId entity_id = 1;
+}
+message UnsubscribeRequest {
+	optional .bgs.protocol.EntityId agent_id = 1;
+	required .bgs.protocol.EntityId entity_id = 2;
+	optional uint64 object_id = 3;
+}
+message UpdateRequest {
+	required .bgs.protocol.EntityId entity_id = 1;
+	repeated .bgs.protocol.presence.v1.FieldOperation field_operation = 2;
+	optional bool no_create = 3;
+	optional .bgs.protocol.EntityId agent_id = 4;
+}
+message QueryRequest {
+	required .bgs.protocol.EntityId entity_id = 1;
+	repeated .bgs.protocol.presence.v1.FieldKey key = 2;
+	optional .bgs.protocol.EntityId agent_id = 3;
+}
+message QueryResponse {
+	repeated .bgs.protocol.presence.v1.Field field = 2;
+}
+message OwnershipRequest {
+	required .bgs.protocol.EntityId entity_id = 1;
+	optional bool release_ownership = 2;
+}
+message BatchSubscribeRequest {
+	optional .bgs.protocol.EntityId agent_id = 1;
+	repeated .bgs.protocol.EntityId entity_id = 2;
+	repeated fixed32 program = 3;
+	repeated .bgs.protocol.presence.v1.FieldKey key = 4;
+	optional uint64 object_id = 5;
+}
+message SubscribeResult {
+	optional .bgs.protocol.EntityId entity_id = 1;
+	optional uint32 result = 2;
+}
+message BatchSubscribeResponse {
+	repeated .bgs.protocol.presence.v1.SubscribeResult subscribe_failed = 1;
+}
+message BatchUnsubscribeRequest {
+	optional .bgs.protocol.EntityId agent_id = 1;
+	repeated .bgs.protocol.EntityId entity_id = 2;
+	optional uint64 object_id = 3;
+}
