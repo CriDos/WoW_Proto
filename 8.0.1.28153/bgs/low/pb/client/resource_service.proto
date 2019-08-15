@@ -1,0 +1,8 @@
+package bgs.protocol.resources.v1;
+import "bgs/low/pb/client/content_handle_types.proto";
+import "bgs/low/pb/client/rpc_types.proto";
+message ContentHandleRequest {
+	required fixed32 program = 1;
+	required fixed32 stream = 2;
+	optional fixed32 version = 3 [default = 1701729619];
+}

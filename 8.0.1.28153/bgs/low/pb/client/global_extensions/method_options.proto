@@ -1,0 +1,5 @@
+package bgs.protocol;
+import "google/protobuf/descriptor.proto";
+message BGSMethodOptions {
+	optional uint32 id = 1;
+}

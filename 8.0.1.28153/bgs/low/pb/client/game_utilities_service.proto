@@ -1,0 +1,62 @@
+package bgs.protocol.game_utilities.v1;
+import "bgs/low/pb/client/attribute_types.proto";
+import "bgs/low/pb/client/content_handle_types.proto";
+import "bgs/low/pb/client/entity_types.proto";
+import "bgs/low/pb/client/game_utilities_types.proto";
+import "bgs/low/pb/client/rpc_types.proto";
+message ClientRequest {
+	repeated .bgs.protocol.Attribute attribute = 1;
+	optional .bgs.protocol.ProcessId host = 2;
+	optional .bgs.protocol.EntityId account_id = 3;
+	optional .bgs.protocol.EntityId game_account_id = 4;
+	optional fixed32 program = 5;
+	optional .bgs.protocol.game_utilities.v1.ClientInfo client_info = 6;
+}
+message ClientResponse {
+	repeated .bgs.protocol.Attribute attribute = 1;
+}
+message ServerRequest {
+	repeated .bgs.protocol.Attribute attribute = 1;
+	required fixed32 program = 2;
+	optional .bgs.protocol.ProcessId host = 3;
+}
+message ServerResponse {
+	repeated .bgs.protocol.Attribute attribute = 1;
+}
+message PresenceChannelCreatedRequest {
+	required .bgs.protocol.EntityId id = 1;
+	optional .bgs.protocol.EntityId game_account_id = 3;
+	optional .bgs.protocol.EntityId account_id = 4;
+	optional .bgs.protocol.ProcessId host = 5;
+}
+message GetPlayerVariablesRequest {
+	repeated .bgs.protocol.game_utilities.v1.PlayerVariables player_variables = 1;
+	optional .bgs.protocol.ProcessId host = 2;
+}
+message GetPlayerVariablesResponse {
+	repeated .bgs.protocol.game_utilities.v1.PlayerVariables player_variables = 1;
+}
+message GameAccountOnlineNotification {
+	required .bgs.protocol.EntityId game_account_id = 1;
+	optional .bgs.protocol.ProcessId host = 2;
+	optional string session_id = 3;
+}
+message GameAccountOfflineNotification {
+	required .bgs.protocol.EntityId game_account_id = 1;
+	optional .bgs.protocol.ProcessId host = 2;
+	optional string session_id = 3;
+}
+message GetAchievementsFileRequest {
+	optional .bgs.protocol.ProcessId host = 1;
+}
+message GetAchievementsFileResponse {
+	optional .bgs.protocol.ContentHandle content_handle = 1;
+}
+message GetAllValuesForAttributeRequest {
+	optional string attribute_key = 1;
+	optional .bgs.protocol.EntityId agent_id = 2;
+	optional fixed32 program = 5;
+}
+message GetAllValuesForAttributeResponse {
+	repeated .bgs.protocol.Variant attribute_value = 1;
+}
