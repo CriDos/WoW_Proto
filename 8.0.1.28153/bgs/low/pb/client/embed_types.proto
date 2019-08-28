@@ -1,12 +1,15 @@
 package bgs.protocol;
+
 message EmbedImage {
 	optional string url = 1;
 	optional uint32 width = 2;
 	optional uint32 height = 3;
 }
+
 message Provider {
 	optional string name = 1;
 }
+
 message EmbedInfo {
 	optional string title = 1;
 	optional string type = 2;
@@ -15,3 +18,4 @@ message EmbedInfo {
 	optional .bgs.protocol.Provider provider = 5;
 	optional string description = 6;
 }
+

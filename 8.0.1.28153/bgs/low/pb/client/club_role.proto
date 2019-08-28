@@ -1,5 +1,7 @@
-package bgs.protocol.club.v1;
 import "bgs/low/pb/client/role_types.proto";
+
+package bgs.protocol.club.v1;
+
 message ClubPrivilegeSet {
 	optional bool can_destroy = 1;
 	optional bool can_set_attribute = 10;
@@ -49,6 +51,7 @@ message ClubPrivilegeSet {
 	optional bool can_mention_here = 186;
 	optional bool can_mention_member = 187;
 }
+
 message ClubRole {
 	optional uint32 id = 1;
 	optional .bgs.protocol.RoleState state = 2;
@@ -56,9 +59,11 @@ message ClubRole {
 	optional bool always_grant_stream_access = 4;
 	optional bool allow_in_club_slot = 5;
 }
+
 message ClubRoleSet {
 	repeated .bgs.protocol.club.v1.ClubRole role = 1;
-	repeated uint32 default_role = 5;
+	repeated uint32 default_role = 5 [packed = true];
 	optional bool assignment_respects_relegation_chain = 6;
 	optional string subtype = 7;
 }
+

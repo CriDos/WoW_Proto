@@ -1,17 +1,21 @@
-package bgs.protocol.notification.v1;
 import "bgs/low/pb/client/account_types.proto";
 import "bgs/low/pb/client/attribute_types.proto";
 import "bgs/low/pb/client/entity_types.proto";
 import "bgs/low/pb/client/rpc_types.proto";
+
+package bgs.protocol.notification.v1;
+
 message Target {
 	optional .bgs.protocol.account.v1.Identity identity = 1;
 	optional string type = 2;
 }
+
 message Subscription {
 	repeated .bgs.protocol.notification.v1.Target target = 1;
 	optional .bgs.protocol.account.v1.Identity subscriber = 2;
 	optional bool delivery_required = 3 [default = false];
 }
+
 message Notification {
 	optional .bgs.protocol.EntityId sender_id = 1;
 	required .bgs.protocol.EntityId target_id = 2;
@@ -24,3 +28,4 @@ message Notification {
 	optional .bgs.protocol.ProcessId peer = 9;
 	optional .bgs.protocol.account.v1.Identity forwarding_identity = 10;
 }
+

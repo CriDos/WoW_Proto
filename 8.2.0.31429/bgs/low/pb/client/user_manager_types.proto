@@ -1,6 +1,8 @@
-package bgs.protocol.user_manager.v1;
 import "bgs/low/pb/client/entity_types.proto";
 import "bgs/low/pb/client/attribute_types.proto";
+
+package bgs.protocol.user_manager.v1;
+
 message RecentPlayer {
 	required .bgs.protocol.EntityId entity_id = 1;
 	optional string program = 2;
@@ -9,9 +11,11 @@ message RecentPlayer {
 	optional fixed32 id = 5 [default = 0];
 	optional fixed32 counter = 6 [default = 0];
 }
+
 message BlockedPlayer {
 	required .bgs.protocol.EntityId account_id = 1;
 	optional string name = 2;
-	repeated uint32 role = 3;
+	repeated uint32 role = 3 [packed = true];
 	optional uint64 privileges = 4 [default = 0];
 }
+

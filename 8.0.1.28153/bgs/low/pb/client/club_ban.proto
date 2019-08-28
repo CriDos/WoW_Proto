@@ -1,11 +1,14 @@
-package bgs.protocol.club.v1;
 import "bgs/low/pb/client/club_member.proto";
 import "bgs/low/pb/client/api/client/v2/attribute_types.proto";
+
+package bgs.protocol.club.v1;
+
 message AddBanOptions {
 	optional .bgs.protocol.club.v1.MemberId target_id = 1;
 	repeated .bgs.protocol.v2.Attribute attribute = 2;
 	optional string reason = 3;
 }
+
 message ClubBan {
 	optional .bgs.protocol.club.v1.MemberId id = 1;
 	optional string battle_tag = 2;
@@ -14,3 +17,4 @@ message ClubBan {
 	optional string reason = 5;
 	optional uint64 creation_time = 6;
 }
+

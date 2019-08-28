@@ -1,6 +1,8 @@
+import public "bgs/low/pb/client/club_types.proto";
+import public "bgs/low/pb/client/rpc_types.proto";
+
 package bgs.protocol.club.v1;
-import "bgs/low/pb/client/club_types.proto";
-import "bgs/low/pb/client/rpc_types.proto";
+
 message SubscribeNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
@@ -10,78 +12,91 @@ message SubscribeNotification {
 	optional .bgs.protocol.club.v1.ClubSettings settings = 10;
 	optional .bgs.protocol.club.v1.Member member = 11;
 }
+
 message UnsubscribeNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 }
+
 message StateChangedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	optional .bgs.protocol.club.v1.ClubStateAssignment assignment = 5;
 }
+
 message SettingsChangedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	optional .bgs.protocol.club.v1.ClubSettingsAssignment assignment = 4;
 }
+
 message MemberAddedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	repeated .bgs.protocol.club.v1.Member member = 4;
 }
+
 message MemberRemovedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	repeated .bgs.protocol.club.v1.MemberRemovedAssignment member = 4;
 }
+
 message MemberStateChangedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	repeated .bgs.protocol.club.v1.MemberStateAssignment assignment = 4;
 }
+
 message SubscriberStateChangedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	repeated .bgs.protocol.club.v1.SubscriberStateAssignment assignment = 4;
 }
+
 message MemberRoleChangedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	repeated .bgs.protocol.club.v1.RoleAssignment assignment = 4;
 }
+
 message SuggestionAddedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	required .bgs.protocol.club.v1.ClubSuggestion suggestion = 4;
 }
+
 message SuggestionRemovedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	optional fixed64 suggestion_id = 4;
-	optional .bgs.protocol.SuggestionRemovedReason reason = 5;
+	optional .bgs.protocol.SuggestionRemovedReason reason = 5 [default = SUGGESTION_REMOVED_REASON_APPROVED];
 }
+
 message StreamAddedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	optional .bgs.protocol.club.v1.Stream stream = 4;
 }
+
 message StreamRemovedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	optional uint64 stream_id = 4;
 }
+
 message StreamStateChangedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
@@ -89,6 +104,7 @@ message StreamStateChangedNotification {
 	optional uint64 stream_id = 4;
 	optional .bgs.protocol.club.v1.StreamStateAssignment assignment = 5;
 }
+
 message StreamMessageAddedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
@@ -96,6 +112,7 @@ message StreamMessageAddedNotification {
 	optional uint64 stream_id = 4;
 	optional .bgs.protocol.club.v1.StreamMessage message = 5;
 }
+
 message StreamMessageUpdatedNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
@@ -103,6 +120,7 @@ message StreamMessageUpdatedNotification {
 	optional uint64 stream_id = 4;
 	optional .bgs.protocol.club.v1.StreamMessage message = 5;
 }
+
 message StreamTypingIndicatorNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
@@ -110,20 +128,24 @@ message StreamTypingIndicatorNotification {
 	optional uint64 stream_id = 4;
 	repeated .bgs.protocol.club.v1.StreamTypingIndicator indicator = 5;
 }
+
 message StreamUnreadIndicatorNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	optional .bgs.protocol.club.v1.StreamEventTime event = 4;
 }
+
 message StreamAdvanceViewTimeNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 	repeated .bgs.protocol.club.v1.StreamAdvanceViewTime view = 4;
 }
+
 message ClubActivityNotification {
 	optional .bgs.protocol.club.v1.MemberId agent_id = 1;
 	optional .bgs.protocol.club.v1.MemberId subscriber_id = 2;
 	optional uint64 club_id = 3;
 }
+
