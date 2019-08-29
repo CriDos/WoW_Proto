@@ -15,6 +15,10 @@ import public "bgs/low/pb/client/message_types.proto";
 import public "bgs/low/pb/client/ets_types.proto";
 import public "bgs/low/pb/client/voice_types.proto";
 import public "bgs/low/pb/client/rpc_types.proto";
+import "bgs/low/pb/client/global_extensions/message_options.proto";
+import "bgs/low/pb/client/global_extensions/field_options.proto";
+import "bgs/low/pb/client/global_extensions/method_options.proto";
+import "bgs/low/pb/client/global_extensions/service_options.proto";
 
 package bgs.protocol.club.v1;
 

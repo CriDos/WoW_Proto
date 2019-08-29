@@ -1,4 +1,8 @@
 import "bgs/low/pb/client/club_types.proto";
+import "bgs/low/pb/client/global_extensions/message_options.proto";
+import "bgs/low/pb/client/global_extensions/field_options.proto";
+import "bgs/low/pb/client/global_extensions/method_options.proto";
+import "bgs/low/pb/client/global_extensions/service_options.proto";
 
 package bgs.protocol.club.v1.membership;
 

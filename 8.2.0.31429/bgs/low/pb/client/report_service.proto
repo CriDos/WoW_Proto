@@ -1,6 +1,10 @@
 import "bgs/low/pb/client/account_types.proto";
 import "bgs/low/pb/client/report_types.proto";
 import "bgs/low/pb/client/rpc_types.proto";
+import "bgs/low/pb/client/global_extensions/message_options.proto";
+import "bgs/low/pb/client/global_extensions/field_options.proto";
+import "bgs/low/pb/client/global_extensions/method_options.proto";
+import "bgs/low/pb/client/global_extensions/service_options.proto";
 
 package bgs.protocol.report.v1;
 

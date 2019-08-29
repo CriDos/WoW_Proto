@@ -3,6 +3,10 @@ import "bgs/low/pb/client/attribute_types.proto";
 import "bgs/low/pb/client/entity_types.proto";
 import "bgs/low/pb/client/invitation_types.proto";
 import "bgs/low/pb/client/rpc_types.proto";
+import "bgs/low/pb/client/global_extensions/message_options.proto";
+import "bgs/low/pb/client/global_extensions/field_options.proto";
+import "bgs/low/pb/client/global_extensions/method_options.proto";
+import "bgs/low/pb/client/global_extensions/service_options.proto";
 
 package bgs.protocol.channel.v1;
 
